@@ -27,8 +27,19 @@ namespace Kata.Spec
         private static Calculator _systemUnderTest;
         private static int _result;
     }
+    
+    public class when_calculating_sum_of_one_number
+    {
+        private Establish _context = () => { _systemUnderTest = new Calculator(); };
 
-    // Given the user input is empty when calculating the sum then it should return zero.
+        static string _number = "1";
+        Because of = () => { _result = _systemUnderTest.Add(_number); };
+
+        It should_return_the_same_number = () => { _result.Should().Be(1); };
+        private static Calculator _systemUnderTest;
+        private static int _result;
+    }
+    
     // Given the user input is one number when calculating the sum then it should return the same number. (example "3" should equal 3)
     // Given the user input is two numbers when calculating the sum then it should return the sum of those numbers. (example "1,2" should equal 3)
     // Given the user input is an unknown amount of numbers when calculating the sum then it should return the sum of all the numbers. (example "1,2,3" should equal 6)
